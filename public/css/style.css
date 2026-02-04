@@ -1,0 +1,680 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  word-spacing: 0.25em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  word-spacing: 0.2em;
+}
+
+.container {
+  flex: 1;
+}
+
+.hr {
+  opacity: 0.3;
+  margin: 2rem 3rem;
+}
+
+/* Navbar */
+
+.navbar {
+  min-height: 5rem;
+  background: linear-gradient(to bottom, #ffffff, #fafafa);
+  z-index: 10 !important;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.logo p {
+  margin-bottom: 0;
+}
+
+.fa-airbnb {
+  color: red;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: #222222 !important;
+  transition: all 0.3s ease !important;
+}
+
+.nav-link:hover {
+  font-weight: bold;
+}
+
+.btn-search {
+  background-color: red !important;
+  color: white !important;
+  border-radius: 1.3rem !important;
+  padding: 0 1rem 0 1rem !important;
+}
+
+.btn-search i {
+  display: inline;
+  margin-right: 0.5rem;
+}
+
+.btn-search:hover {
+  cursor: pointer;
+}
+
+.inp-search {
+  border-radius: 1.3rem !important;
+  padding: 0.5rem 3rem 0.5rem 3rem !important;
+}
+
+/* Navbar toggler button */
+.navbar-toggler {
+  border-radius: 1rem !important;
+  border: 0.1rem solid #FF385C !important;
+  background-color: #fff !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Hamburger icon color (Bootstrap SVG override) */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,56,92,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Hover = darker red + same glow */
+.navbar-toggler:hover {
+  border-color: #E11D48 !important;
+  box-shadow: 0 0 0 2px rgba(255, 56, 92, 0.15) !important;
+  cursor: pointer;
+}
+
+/* Focus (Bootstrap kills it by default) */
+.navbar-toggler:focus,
+.navbar-toggler:focus-visible {
+  outline: none !important;
+  border-color: #E11D48 !important;
+  box-shadow: 0 0 0 2px rgba(255, 56, 92, 0.15) !important;
+}
+
+
+/* Singup & Login*/
+
+.h2_signup,.h2_login {
+  color: red;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+/* Right Arrow Button*/
+
+.right_arrow i {
+  color: #3B82F6;
+}
+
+button.btn.right_arrow {
+  border: 1.5px solid #BFDBFE !important;
+  background-color: #fff;
+}
+
+button.btn.right_arrow:hover {
+  border-color: #3B82F6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+  cursor: pointer;
+}
+
+/* Focus (Bootstrap removes it by default) */
+button.btn.right_arrow:focus,
+button.btn.right_arrow:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+/* Flash msg */
+
+.alert {
+  border-radius: 0.75rem;
+}
+
+/* Error page */
+
+.alert h4 {
+  font-size: 1.1rem;
+}
+
+
+/* Cards */
+
+.card-listings {
+  border: none !important;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.review-card {
+  border: 1px solid #dee2e6;
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.card-height {
+  height: 15rem !important;
+}
+
+.card-title {
+  height: 2.5rem;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.card-text p {
+  font-weight: 400 !important;
+}
+
+.listings-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+}
+
+/* Overlay */
+
+.card-img-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: white;
+  border-radius: 1rem;
+}
+
+.card-listings:hover .card-img-overlay {
+  opacity: 0.2;
+}
+
+/* Add new Form */
+
+.add-btn {
+  background-color: red !important;
+  border: none !important;
+}
+
+/* Edit Page */
+
+.edit-btn {
+  background-color: red !important;
+  border: none !important;
+}
+
+/* Show Page */
+
+.btns {
+  display: flex;
+}
+
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.px-6 {
+  padding-left: 7rem !important;
+  padding-right: 7rem !important;
+}
+
+/* Show Page – Score Section */
+
+.show-img {
+  height: 30rem;
+  object-fit: cover;
+}
+
+/* =========================
+   SHOW PAGE
+   ========================= */
+
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* SCORE BLOCK */
+
+.score-block {
+  margin-bottom: 1.2rem;
+}
+
+.score-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+/* Progress bar base */
+
+.progress {
+  height: 0.6rem;
+  border-radius: 1rem;
+  background-color: #e9ecef;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 1rem;
+  transition: width 0.4s ease;
+}
+
+/* =========================
+   INDEX PAGE – BADGES ONLY
+   ========================= */
+
+.index-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+/* Base badge style */
+.index-badge {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 99px !important;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* Host Reliability — green */
+.index-badge.host {
+  color: white !important;
+  background: linear-gradient(
+    90deg,
+    #3b82f6,
+    #1e40af
+    );
+  }
+  
+  /* Power Backup — purple */
+  .index-badge.power {
+  color: white !important;
+  background: linear-gradient(
+    90deg,
+     #fbbf24,
+  #b45309
+    );
+  }
+  
+  /* Wi-Fi Verified — blue */
+  .index-badge.wifi {
+  color: white !important;
+  background: linear-gradient(
+    90deg,
+   #22c55e,
+    #15803d
+  );
+}
+
+/* Icons inside badges */
+.index-badge i {
+  color: #ffffff;
+  font-size: 0.75rem;
+}
+
+/* LOW → HIGH (polished, readable, premium) */
+
+/* Host Reliability — green (trust) */
+.progress-bar.score-host {
+  background: linear-gradient(
+    90deg,
+    #dcfce7 0%,
+    #4ade80 55%,
+    #15803d 100%
+  );
+}
+
+/* Work From Home — blue (focus/tech) */
+.progress-bar.score-wfh {
+  background: linear-gradient(
+    90deg,
+    #dbeafe 0%,
+    #60a5fa 55%,
+    #1d4ed8 100%
+  );
+}
+
+/* Area Safety — amber (alert → safe) */
+.progress-bar.score-area {
+  background: linear-gradient(
+    90deg,
+    #fef3c7 0%,
+    #fbbf24 55%,
+    #b45309 100%
+  );
+}
+
+/* Static Pages (Privacy, Terms, Company Details) */
+
+.static-page h2 {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+.static-page h5 {
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+.static-page p,
+.static-page li {
+  color: #333;
+  line-height: 1.7;
+}
+
+.static-page ul {
+  padding-left: 1.2rem;
+}
+
+
+/* Footer */
+
+footer {
+  margin-top: 3rem;
+}
+
+.f-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 3rem 7rem 3rem;
+  font-size: 1rem;
+}
+
+.f-info-cotainer,
+.f-info-socials,
+.f-info-links {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+
+.f-info-socials div {
+  background-color: rgb(214, 211, 211, 0);
+  height: 1.5rem;
+  width: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.f-info-socials i {
+  font-size: 1.2rem;
+  color: initial;
+}
+
+.f-info-socials div:hover {
+  background-color: rgb(214, 211, 211, 0.3);
+  transform: scale(1.05);
+  border-radius: 50%;
+}
+
+.f-info-socials i:hover {
+  cursor: pointer;
+}
+
+/* Map */
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+/* Filter & toggle */
+
+/* FILTER  */
+
+.filter {
+  text-align: center;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.filter-size {
+  font-size: 1.3rem;
+}
+
+.filter:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* TAX TOGGLE */
+
+.tax-toggle {
+  border-radius: 1rem;
+  padding: 0.5rem 0.7rem;
+  border: 0.1rem solid #BFDBFE;
+  height: 3rem;
+  font-weight: 500;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tax-toggle:hover {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+  cursor: pointer;
+}
+
+
+
+
+#filter_toggle::-webkit-scrollbar {
+  display: none;
+}
+#filter_toggle {
+  scrollbar-width: none;
+}
+
+/* Default icon */
+.filter i {
+  color: #6c757d;
+  transition: all 0.25s ease;
+}
+
+/* Base icon setup */
+.gradient-icon {
+  display: inline-block;
+}
+
+/* Apply gradient ONLY on hover / active */
+.filter:hover .gradient-trending,
+.filter.active .gradient-trending {
+  background: linear-gradient(135deg, #FF385C, #FF6A88);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.filter:hover .gradient-rooms,
+.filter.active .gradient-rooms {
+  background: linear-gradient(135deg, #4A5568, #2D3748);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.filter:hover .gradient-cities,
+.filter.active .gradient-cities {
+  background: linear-gradient(135deg, #0D6EFD, #4D96FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.filter:hover .gradient-mountains,
+.filter.active .gradient-mountains {
+  background: linear-gradient(135deg, #198754, #6BCF9D);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.filter:hover .gradient-castles,
+.filter.active .gradient-castles {
+  background: linear-gradient(135deg, #6F42C1, #9D7CF2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.filter:hover .gradient-pools,
+.filter.active .gradient-pools {
+  background: linear-gradient(135deg, #0DCAF0, #66E3F7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.filter:hover .gradient-camping,
+.filter.active .gradient-camping {
+  background: linear-gradient(135deg, #FD7E14, #FFB347);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.filter:hover .gradient-farms,
+.filter.active .gradient-farms {
+  background: linear-gradient(135deg, #2F855A, #22543D);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.filter:hover .gradient-arctic,
+.filter.active .gradient-arctic {
+  background: linear-gradient(135deg, #2B6CB0, #2C5282);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* General responsive */
+
+@media (max-width: 991.98px) {
+
+  .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-search {
+    order: 1;
+  }
+
+  .nav-left {
+    order: 2;
+    align-items: center;
+  }
+
+  .nav-right {
+    order: 3;
+    align-items: center;
+  }
+
+  .show-img {
+  height: 20rem;
+  object-fit: cover;
+}
+
+}
+
+/* Mobile responsive */
+
+
+@media (max-width:767.98px){
+
+
+/* Footer */
+
+
+  .f-info {
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+
+  .f-info-cotainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .f-info-links {
+    order: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .f-info-links a {
+    display: block;
+    width: 100%;
+  }
+
+  .f-info-socials {
+    order:2;
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    margin-top: 1rem;
+  }
+
+   .h2_signup,.h2_login {
+    font-size: 1.6rem;
+  }
+
+    .show-img {
+  height: 20rem;
+  object-fit: cover;
+}
+}
+
+
+
+

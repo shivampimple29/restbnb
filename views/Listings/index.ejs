@@ -1,0 +1,177 @@
+<% layout ("/layouts/boilerplate") %>
+
+<div class="d-flex align-items-center position-relative gap-3">
+
+  <!-- FILTERS (scrollable ONLY) -->
+  <div
+    id="filter_toggle"
+    class="d-flex flex-nowrap overflow-auto gap-5 px-4 py-2"
+  >
+    <div class="filter d-flex flex-column align-items-center">
+      <i class="bi bi-fire filter-size gradient-icon gradient-trending"></i>
+      <p>Trending</p>
+    </div>
+
+    <div class="filter d-flex flex-column align-items-center">
+      <i class="bi bi-house-door filter-size gradient-icon gradient-rooms"></i>
+      <p>Rooms</p>
+    </div>
+
+    <div class="filter d-flex flex-column align-items-center">
+      <i class="bi bi-buildings filter-size gradient-icon gradient-cities"></i>
+      <p>Cities</p>
+    </div>
+
+    <div class="filter d-flex flex-column align-items-center">
+      <i class="bi bi-triangle filter-size gradient-icon gradient-mountains"></i>
+      <p>Mountains</p>
+    </div>
+
+    <div class="filter d-flex flex-column align-items-center">
+      <i class="bi bi-bank filter-size gradient-icon gradient-castles"></i>
+      <p>Castles</p>
+    </div>
+
+    <div class="filter d-flex flex-column align-items-center">
+      <i class="bi bi-water filter-size gradient-icon gradient-pools"></i>
+      <p>Pools</p>
+    </div>
+
+    <div class="filter d-flex flex-column align-items-center">
+      <i class="bi bi-compass filter-size gradient-icon gradient-camping"></i>
+      <p>Camping</p>
+    </div>
+
+    <div class="filter d-flex flex-column align-items-center">
+      <i class="bi bi-tree filter-size gradient-icon gradient-farms"></i>
+      <p>Farms</p>
+    </div>
+
+    <div class="filter d-flex flex-column align-items-center">
+      <i class="bi bi-snow filter-size gradient-icon gradient-arctic"></i>
+      <p>Arctic</p>
+    </div>
+  </div>
+
+  <!-- RIGHT ARROW -->
+  <button
+    id="filterScrollRight"
+    class="btn right_arrow d-lg-none shadow-sm mb-3"
+  >
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+
+  <!-- TAX TOGGLE -->
+  <div class="tax-toggle mb-3">
+    <div class="form-check-reverse form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+      <label
+  class="form-check-label"
+  for="flexSwitchCheckDefault"
+  id="taxToggleLabel"
+>
+  Display total before taxes
+</label>
+    </div>
+  </div>
+</div>
+
+<!-- LISTINGS -->
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+  <% for (let listings of allListings) { %>
+
+    <a href="/listings/<%= listings.id %>" class="listings-link">
+      <div class="card card-listings col">
+
+        <img
+          src="<%= listings.image.url %>"
+          class="card-img-top"
+          alt="listing_image"
+          style="height: 20rem"
+        />
+
+        <div class="card-img-overlay"></div>
+
+        <div class="card-body">
+
+          <!-- TITLE -->
+          <h5 class="card-title">
+            <b><%= listings.title %></b>
+          </h5>
+
+          <!-- LOCATION -->
+          <p class="mb-2">
+            <span><i class="fa-solid fa-location-arrow"></i></span>
+            <%= listings.location %>, <%= listings.country %>
+          </p>
+
+          <!-- FOOD PREFERENCES -->
+
+          <% if (listings.foodPreference) { %>
+          <p class="small mb-2">
+            <span class="me-1"><i class="fa-solid fa-bowl-food"></i></span>
+          Food : <%= listings.foodPreference %>
+          </p>
+        <% } %>
+
+        <!-- Quiet Hours -->
+
+          <% if (listings.houseRules?.quietHours) { %>
+      <p class="small mb-2">
+        <span class="me-1"><i class="fa-solid fa-clock"></i></span>
+      Quiet Hours : <%= listings.houseRules.quietHours %>
+       </p>
+    <% } %>
+
+        <!-- Max guests -->
+
+        <% if (listings.houseRules?.maxGuests) { %>
+      <p class="small mb-2">
+        <span class="me-1"><i class="fa-solid fa-people-group"></i></span>
+      Max Guests :<%= listings.houseRules.maxGuests %>
+       </p>
+    <% } %>
+
+          <!-- BADGES (NEW) -->
+          <% if (listings.badges) { %>
+            <div class="d-flex flex-wrap gap-2 mt-4 mb-3 ">
+
+              <% if (listings.badges && listings.badges.water24x7) { %>
+                <span class="badge bg-light text-dark border index-badge host p-2">
+                  <span class="me-1 "><i class="fa-solid fa-droplet"></i></span>
+                  Water 24×7
+                </span>
+              <% } %>
+
+              <% if (listings.badges && listings.badges.powerBackup ) { %>
+                <span class="badge bg-light text-dark border index-badge power p-2">
+                  <span class="me-1"><i class="fa-solid fa-bolt"></i></span>
+                  Power Backup
+                </span>
+              <% } %>
+
+              <% if ( listings.badges && listings.badges.wifiVerified ) { %>
+                <span class="badge bg-light text-dark border index-badge wifi p-2">
+                  <span class="me-1"><i class="fa-solid fa-wifi"></i></span>
+                  Wi-Fi Verified
+                </span>
+              <% } %>
+
+            </div>
+          <% } %>
+
+          <!-- PRICE -->
+          <p class="card-text price-text" data-price="<%= listings.price %>">
+            <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+            <span class="price-value">
+              <%= listings.price.toLocaleString("en-IN") %>
+            </span>
+            / night
+          </p>
+
+        </div>
+      </div>
+    </a>
+
+  <% } %>
+</div>

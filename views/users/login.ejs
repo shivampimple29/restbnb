@@ -1,0 +1,49 @@
+<% layout ("/layouts/boilerplate") %>
+
+<div class="container min-vh-75 d-flex align-items-center justify-content-center">
+  <div class="row w-100 justify-content-center">
+
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+
+      <h2 class="text-center h2_login mb-4">
+        Login on Restbnb
+      </h2>
+
+      <form method="POST" action="/login" novalidate class="needs-validation">
+
+        <!-- Username -->
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input
+            type="text"
+            name="username"
+            class="form-control"
+            placeholder="Enter your username..."
+            required
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter your password..."
+            required
+          />
+        </div>
+
+        <div class="d-grid">
+          <button class="btn btn-danger add-btn" type="submit">
+            Log in
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,241 @@
+<% layout ("/layouts/boilerplate") %>
+
+<script>
+  const mapToken = "<%= process.env.MAP_TOKEN %>";
+  const listing = <%- JSON.stringify(listing) %>;
+</script>
+
+<div class="container my-4">
+
+  <!-- TITLE -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <h3 class="mb-3"><%= listing.title %></h3>
+    </div>
+  </div>
+
+  <!-- LISTING CARD -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <div class="card card-listings show-card mb-4">
+
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top show-img"
+          alt="listing_image"
+        />
+
+        <div class="card-body mt-3">
+          <p>
+            <span><i class="fa-solid fa-user"></i></span>
+            <i>Owned by <%= listing.owner.username %></i></p>
+          
+            <p> 
+           <span class="me-2 mb-3"><i class="fa-solid fa-align-justify"></i></span>Description :
+         </p>
+           <p><%= listing.description %></p>
+            <p>
+              <span class="me-1"><i class="fa-solid fa-location-arrow"></i></span>
+              <%= listing.location %>, <%= listing.country %></p>
+
+
+          <!-- FOOD PREFERENCES -->
+
+          <% if (listing.foodPreference) { %>
+          <p class="small mb-2">
+            <span class="me-1"><i class="fa-solid fa-bowl-food"></i></span>
+          Food : <%= listing.foodPreference %>
+          </p>
+        <% } %>
+
+        <!-- Quiet Hours -->
+
+          <% if (listing.houseRules?.quietHours) { %>
+      <p class="small mb-2">
+        <span class="me-1"><i class="fa-solid fa-clock"></i></span>
+      Quiet Hours : <%= listing.houseRules.quietHours %>
+       </p>
+    <% } %>
+
+        <!-- Max guests -->
+
+        <% if (listing.houseRules?.maxGuests) { %>
+      <p class="small mb-2">
+        <span class="me-1"><i class="fa-solid fa-people-group"></i></span>
+      Max Guests : <%= listing.houseRules.maxGuests %>
+       </p>
+    <% } %>
+
+
+              <p class="mt-4">
+                <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                <%= listing.price.toLocaleString("en-IN") %></p>
+
+          <!-- SCORES -->
+          <hr class="my-3" />
+          <h5 class="mb-3">Property Scores</h5>
+
+          <!-- HOST SCORE -->
+          <div class="score-block">
+            <div class="score-header">
+              <span data-bs-toggle="tooltip"
+                title="Based on host rating, response time and booking history">
+                <span><i class="fa-solid fa-chart-simple"></i></span>
+                Host Reliability 
+              </span>
+              <span><%= hostScore %>/100</span>
+            </div>
+
+            <div class="progress">
+              <div
+                class="progress-bar score-host"
+                style="width: <%= hostScore %>%"
+                role="progressbar"
+                aria-valuenow="<%= hostScore %>"
+                aria-valuemin="0"
+                aria-valuemax="100">
+              </div>
+            </div>
+          </div>
+
+          <!-- WFH SCORE -->
+          <div class="score-block">
+            <div class="score-header">
+              <span data-bs-toggle="tooltip"
+                title="Wi-Fi speed, desk availability and power backup">
+                <span><i class="fa-solid fa-wifi"></i></span>
+                Work-From-Home
+              </span>
+              <span><%= wfhScore %>/100</span>
+            </div>
+
+            <div class="progress">
+              <div
+                class="progress-bar score-wfh"
+                style="width: <%= wfhScore %>%"
+                role="progressbar">
+              </div>
+            </div>
+          </div>
+
+          <!-- AREA SCORE -->
+          <div class="score-block">
+            <div class="score-header">
+              <span data-bs-toggle="tooltip"
+                title="Safety, crime index and night noise">
+                <span><i class="fa-solid fa-user-shield"></i></span>
+                Area Safety
+              </span>
+              <span><%= areaScore %>/100</span>
+            </div>
+
+            <div class="progress">
+              <div
+                class="progress-bar score-area"
+                style="width: <%= areaScore %>%"
+                role="progressbar">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="row justify-content-center mb-4">
+    <div class="col-12 col-md-10 col-lg-8 d-flex gap-3">
+      <a href="/listings/<%= listing.id %>/edit" class="btn btn-dark edit-btn">
+        Edit
+      </a>
+
+      <form method="POST" action="/listings/<%= listing.id %>?_method=DELETE">
+        <button class="btn btn-dark">Delete</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <hr />
+      <h4>Leave a Review</h4>
+
+      <form
+        action="/listings/<%= listing.id %>/reviews"
+        method="POST"
+        novalidate
+        class="needs-validation">
+
+        <div class="mb-3 mt-3">
+          <label class="form-label">Rating</label>
+          <output id="rangeValue"></output>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            id="range4"
+            name="review[rating]"
+            class="form-range"
+            required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Comments</label>
+          <textarea
+            name="review[comment]"
+            rows="5"
+            class="form-control"
+            required></textarea>
+        </div>
+
+        <button class="btn btn-dark mt-2">Submit</button>
+      </form>
+
+      <% if (listing.reviews.length > 0) { %>
+        <hr class="mt-4" />
+        <div class="row">
+          <% for (let review of listing.reviews) { %>
+            <div class="col-12 col-md-6 mb-3">
+              <div class="card review-card p-3 d-flex flex-column">
+                <h6><%= review.author.username %></h6>
+                <p class="text-muted small">
+                  <%- "&#11088;".repeat(review.rating) %>
+                </p>
+                <p><%= review.comment %></p>
+
+                <form
+                  method="POST"
+                  action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE"
+                  class="mt-auto">
+                  <button class="btn btn-dark btn-sm">Delete</button>
+                </form>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="row justify-content-center mt-4 mb-3">
+    <div class="col-12 col-md-10 col-lg-8">
+      <% if (listing.geometry && listing.geometry.coordinates) { %>
+      <h3 class="mb-3">Where you'll be</h3>
+      <div id="map"></div>
+      <% } else { %>
+  <p class="text-muted">Location map unavailable</p>
+<% } %>
+    </div>
+  </div>
+
+</div>
+
+<script src="/js/map.js"></script>
+
+<script>
+  document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    .forEach(el => new bootstrap.Tooltip(el));
+</script>

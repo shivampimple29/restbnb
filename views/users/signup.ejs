@@ -1,0 +1,87 @@
+<% layout ("/layouts/boilerplate") %>
+
+<div class="container min-vh-75 d-flex align-items-center justify-content-center">
+  <div class="row w-100 justify-content-center">
+
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+
+      <!-- Heading -->
+      <h2 class="text-center h2_signup mb-4">
+        Signup on Restbnb
+      </h2>
+
+      <!-- Form -->
+      <form
+        method="POST"
+        action="/signup"
+        novalidate
+        class="needs-validation"
+      >
+
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter your username..."
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Username looks good!</div>
+          <div class="invalid-feedback">
+            Please enter a valid username.
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email..."
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Email looks valid!</div>
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password..."
+            class="form-control"
+            required
+            minlength="6"
+          />
+          <div class="valid-feedback">
+            Password is strong enough.
+          </div>
+          <div class="invalid-feedback">
+            Password must be at least 6 characters long.
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="d-grid">
+          <button class="btn btn-danger add-btn" type="submit">
+            Sign Up
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>

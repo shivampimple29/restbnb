@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="/listings">
+      <div class="logo">
+        <i class="fa-brands fa-airbnb"></i>
+        <span>restbnb</span>
+      </div>
+    </a>
+
+    <!-- Toggler -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <!-- Left links -->
+      <div class="navbar-nav nav-left">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+
+      <!-- Search -->
+      <div class="navbar-nav nav-search ms-lg-auto">
+        <form class="d-flex my-2 my-md-0" role="search">
+          <input
+          id="searchInput"
+            class="form-control me-2 inp-search"
+            type="search"
+            placeholder="search destinations..."
+            aria-label="Search"
+          />
+          <button class="btn btn-search" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
+        </form>
+      </div>
+
+      <!-- Right links -->
+      <div class="navbar-nav nav-right ms-md-auto gap-2">
+        <a class="nav-link" href="/listings/new">Listings</a>
+
+        <% if (!currUser){ %>
+          <a class="nav-link" href="/signup">Sign up</a>
+          <a class="nav-link" href="/login">Log in</a>
+        <% } %>
+
+        <% if(currUser){ %>
+          <a class="nav-link" href="/logout">Log out</a>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</nav>
