@@ -30,7 +30,7 @@ h6 {
   min-height: 5rem;
   background: linear-gradient(to bottom, #ffffff, #fafafa);
   z-index: 10 !important;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-weight: 500;
 }
 
@@ -247,9 +247,7 @@ button.btn.right_arrow:focus-visible {
   object-fit: cover;
 }
 
-/* =========================
-   SHOW PAGE
-   ========================= */
+/* SHOW PAGE */
 
 .show-card {
   padding-left: 0;
@@ -284,9 +282,7 @@ button.btn.right_arrow:focus-visible {
   transition: width 0.4s ease;
 }
 
-/* =========================
-   INDEX PAGE – BADGES ONLY
-   ========================= */
+ /* INDEX PAGE – BADGES ONLY */
 
 .index-badges {
   display: flex;
@@ -499,9 +495,6 @@ footer {
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
   cursor: pointer;
 }
-
-
-
 
 #filter_toggle::-webkit-scrollbar {
   display: none;

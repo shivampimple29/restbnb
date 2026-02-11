@@ -9,15 +9,85 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
+  const { q, filter } = req.query;
 
-  const enrichedListings = allListings.forEach((listing) => {
-  listing.hostScore = calculateHostScore(listing.hostStats);
-  listing.wfhScore = calculateWFHScore(listing.workFromHome);
-  listing.areaScore = calculateAreaScore(listing.areaMetrics);
-});
+  let query = {};
 
-res.render("Listings/index.ejs", { allListings });
+  /* ---------------- SEARCH ---------------- */
+
+  if (q && q.trim() !== "") {
+    const regex = new RegExp(q, "i");
+
+    query.$or = [
+      { title: regex },
+      { location: regex },
+      { country: regex },
+      { description: regex },
+      { foodPreference: regex },
+    ];
+
+    // Search numeric price
+    if (!isNaN(q)) {
+      query.$or.push({ price: Number(q) });
+    }
+
+    // Badge keyword search
+    const lower = q.toLowerCase();
+
+    if (lower.includes("water")) {
+      query.$or.push({ "badges.water24x7": true });
+    }
+
+    if (lower.includes("power")) {
+      query.$or.push({ "badges.powerBackup": true });
+    }
+
+    if (lower.includes("wifi")) {
+      query.$or.push({ "badges.wifiVerified": true });
+    }
+  }
+
+  /* ---------------- FILTERS ---------------- */
+
+  if (filter) {
+    if (filter === "rooms") {
+      query["badges.water24x7"] = true;
+    }
+
+    if (filter === "cities") {
+      query.country = { $exists: true };
+    }
+
+    if (filter === "mountains") {
+      query.title = /cabin|mountain|chalet/i;
+    }
+
+    if (filter === "pools") {
+      query.description = /pool/i;
+    }
+
+    if (filter === "camping") {
+      query.title = /camp|treehouse/i;
+    }
+
+    if (filter === "arctic") {
+      query.title = /arctic|snow/i;
+    }
+  }
+
+  const allListings = await Listing.find(query);
+
+  allListings.forEach((listing) => {
+    listing.hostScore = calculateHostScore(listing.hostStats);
+    listing.wfhScore = calculateWFHScore(listing.workFromHome);
+    listing.areaScore = calculateAreaScore(listing.areaMetrics);
+  });
+
+  res.render("Listings/index.ejs", {
+    allListings,
+    q,
+    filter
+  });
 };
 
 module.exports.renderNewForm = (req, res) => {

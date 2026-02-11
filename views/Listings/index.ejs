@@ -3,55 +3,75 @@
 <div class="d-flex align-items-center position-relative gap-3">
 
   <!-- FILTERS (scrollable ONLY) -->
-  <div
-    id="filter_toggle"
-    class="d-flex flex-nowrap overflow-auto gap-5 px-4 py-2"
-  >
+<div
+  id="filter_toggle"
+  class="d-flex flex-nowrap overflow-auto gap-5 px-4 py-2"
+>
+
+  <a href="/listings?filter=trending" class="text-decoration-none text-dark">
     <div class="filter d-flex flex-column align-items-center">
       <i class="bi bi-fire filter-size gradient-icon gradient-trending"></i>
       <p>Trending</p>
     </div>
+  </a>
 
+  <a href="/listings?filter=rooms" class="text-decoration-none text-dark">
     <div class="filter d-flex flex-column align-items-center">
       <i class="bi bi-house-door filter-size gradient-icon gradient-rooms"></i>
       <p>Rooms</p>
     </div>
+  </a>
 
+  <a href="/listings?filter=cities" class="text-decoration-none text-dark">
     <div class="filter d-flex flex-column align-items-center">
       <i class="bi bi-buildings filter-size gradient-icon gradient-cities"></i>
       <p>Cities</p>
     </div>
+  </a>
 
+  <a href="/listings?filter=mountains" class="text-decoration-none text-dark">
     <div class="filter d-flex flex-column align-items-center">
       <i class="bi bi-triangle filter-size gradient-icon gradient-mountains"></i>
       <p>Mountains</p>
     </div>
+  </a>
 
+  <a href="/listings?filter=castles" class="text-decoration-none text-dark">
     <div class="filter d-flex flex-column align-items-center">
       <i class="bi bi-bank filter-size gradient-icon gradient-castles"></i>
       <p>Castles</p>
     </div>
+  </a>
 
+  <a href="/listings?filter=pools" class="text-decoration-none text-dark">
     <div class="filter d-flex flex-column align-items-center">
       <i class="bi bi-water filter-size gradient-icon gradient-pools"></i>
       <p>Pools</p>
     </div>
+  </a>
 
+  <a href="/listings?filter=camping" class="text-decoration-none text-dark">
     <div class="filter d-flex flex-column align-items-center">
       <i class="bi bi-compass filter-size gradient-icon gradient-camping"></i>
       <p>Camping</p>
     </div>
+  </a>
 
+  <a href="/listings?filter=farms" class="text-decoration-none text-dark">
     <div class="filter d-flex flex-column align-items-center">
       <i class="bi bi-tree filter-size gradient-icon gradient-farms"></i>
       <p>Farms</p>
     </div>
+  </a>
 
+  <a href="/listings?filter=arctic" class="text-decoration-none text-dark">
     <div class="filter d-flex flex-column align-items-center">
       <i class="bi bi-snow filter-size gradient-icon gradient-arctic"></i>
       <p>Arctic</p>
     </div>
-  </div>
+  </a>
+
+</div>
 
   <!-- RIGHT ARROW -->
   <button
@@ -95,7 +115,7 @@
         <div class="card-body">
 
           <!-- TITLE -->
-          <h5 class="card-title">
+          <h5 class="card-title mt-1">
             <b><%= listings.title %></b>
           </h5>
 

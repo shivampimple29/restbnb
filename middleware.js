@@ -62,7 +62,3 @@ module.exports.isReviewAuthor = async (req, res, next) => {
   next();
 };
 
-
-
-//   console.log("isAuthenticated:", req.isAuthenticated());
-//   console.log("user:", req.user);
