@@ -3,7 +3,7 @@
 A production-ready **Airbnb-inspired rental platform** built using **Node.js, Express, MongoDB, and EJS**, focused on real-world backend architecture and cloud deployment.
 
 🌐 **Live Website:**  
-👉 https://restbnb-e1xk.onrender.com
+👉 https://restbnb-rps2.onrender.com/listings
 
 ---
 
